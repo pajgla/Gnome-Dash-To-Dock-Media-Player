@@ -1,0 +1,58 @@
+.dmp-media-widget {
+    padding: 8px 12px;
+    spacing: 12px;
+    border-radius: 12px;
+}
+
+.dmp-main-container {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.dmp-album-cover-art {
+    border-radius: 8px;
+}
+
+.dmp-media-right-container{
+    spacing: 0px;
+    margin-left: 8px;
+}
+
+.dmp-media-title {
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+}
+
+.dmp-rcontainer-bottom-row {
+    spacing: 8px;
+}
+
+.dmp-media-artist-label{
+    font-size: 10px;
+    color: #cccccc;
+    y-align: center;
+}
+
+.dmp-playback-controls {
+    spacing: 4px;
+    y-align: center;
+}
+
+.dmp-play-pause-button,
+.dmp-next-button,
+.dmp-previous-button {
+    padding: 6px;
+}
+
+.dmp-play-pause-button:hover,
+.dmp-next-button:hover,
+.dmp-previous-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dmp-play-pause-button StIcon,
+.dmp-next-button StIcon,
+.dmp-previous-button StIcon {
+    icon-size: 12px;
+}

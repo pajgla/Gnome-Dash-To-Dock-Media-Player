@@ -1,0 +1,8 @@
+{
+  "name": "Dock Media Player",
+  "description": "Adds interactive media player inside the dash to dock widget",
+  "uuid": "dock-media-player@pajgla.github",
+  "shell-version": [
+    "49"
+  ]
+}
