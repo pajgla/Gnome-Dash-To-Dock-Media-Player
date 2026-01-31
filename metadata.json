@@ -1,8 +1,15 @@
 {
   "name": "Dock Media Player",
-  "description": "Adds interactive media player inside the dash to dock widget",
+  "description": "Simple media widget for Dash to Dock",
   "uuid": "dock-media-player@pajgla.github",
   "shell-version": [
     "49"
-  ]
+  ],
+  "url": "https://github.com/pajgla/Gnome-Dash-To-Dock-Media-Player",
+  "donations": {
+    "github": "Pajgla",
+    "paypal": "Pajgla00"
+  },
+  "version": 2,
+  "version-name": "1.0"
 }

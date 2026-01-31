@@ -50,7 +50,7 @@ export default class DockMediaPlayerExtension extends Extension {
         else
         {
             //Wait for the widget to be constructed
-            const id = Main.uiGroup.connect('child-added', (_, actor) => {
+            this._dashAddedID = Main.uiGroup.connect('child-added', (_, actor) => {
                 if (actor.get_name() === 'dashtodockContainer' && actor.constructor.name === 'DashToDock')
                 {
                     Main.uiGroup.disconnect(id);
@@ -101,6 +101,11 @@ export default class DockMediaPlayerExtension extends Extension {
 
     disable() 
     {
+        if (this._dashAddedID) {
+            Main.uiGroup.disconnect(this._dashAddedID);
+            this._dashAddedID = null;
+        }
+
         this._mediaWidget.collapseContainer(() => {
             if (this._mediaWidget.get_parent())
             {

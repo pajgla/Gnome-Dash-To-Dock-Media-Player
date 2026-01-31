@@ -57,7 +57,7 @@ export const MediaWidget = GObject.registerClass(
             this._rightContainer = new St.BoxLayout({
                 style_class: StyleClassNames.RightContainer,
                 vertical: true,
-                x_expand: false,
+                x_expand: true,
                 y_expand: true,
             });
 
@@ -194,7 +194,6 @@ export const MediaWidget = GObject.registerClass(
             //#TODO: Gray out buttons when playback controls are not available
 
             this._playPauseButton.connect("clicked", () => {
-                Main.notify('Media Status Changed', `New status: `);
                 this._mediaController.toggleStatus();
             });
 

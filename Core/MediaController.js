@@ -164,10 +164,7 @@ export const MediaController = class MediaController
             }
         }
 
-        if (typeof this._onStatusChange === 'function')
-        {
-            this._onStatusChange(busName, status, trackInfo);
-        }
+        this._onStatusChange(busName, status, trackInfo);
     }
 
     removePlayer(busName)
@@ -185,7 +182,7 @@ export const MediaController = class MediaController
             const proxy = this.getProxy(nextBus);
             this.handleStatusChange(nextBus, proxy.PlaybackStatus ?? MediaStatus.STOPPED, proxy);
         }
-        else if (typeof this._onStatusChange === 'function')
+        else
         {
             //We don't have any players left
             this._onStatusChange(null, MediaStatus.STOPPED, null);
