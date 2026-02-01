@@ -3,6 +3,10 @@
   "description": "Simple media widget for Dash to Dock",
   "uuid": "dock-media-player@pajgla.github",
   "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
     "49"
   ],
   "url": "https://github.com/pajgla/Gnome-Dash-To-Dock-Media-Player",
@@ -10,6 +14,6 @@
     "github": "Pajgla",
     "paypal": "Pajgla00"
   },
-  "version": 2,
-  "version-name": "1.0"
+  "version": 4,
+  "version-name": "1.1"
 }
