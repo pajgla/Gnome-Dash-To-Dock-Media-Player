@@ -37,26 +37,36 @@ export default class DockMediaPlayerExtension extends Extension {
         this.insertIntoDash();
     }
 
-    insertIntoDash()
-    {
+    insertIntoDash() {
+        const attach = (actor) => {
+            this.attachMediaWidget(actor);
+        };
+
         const existingDash = Main.uiGroup.get_children().find(
             actor => actor.get_name() === 'dashtodockContainer' && actor.constructor.name === 'DashToDock'
         );
 
-        if (existingDash)
-        {
-            this.attachMediaWidget(existingDash);
-        }
-        else
-        {
-            //Wait for the widget to be constructed
+        if (existingDash) {
+            attach(existingDash);
+        } else {
             this._dashAddedID = Main.uiGroup.connect('child-added', (_, actor) => {
-                if (actor.get_name() === 'dashtodockContainer' && actor.constructor.name === 'DashToDock')
-                {
-                    Main.uiGroup.disconnect(id);
-                    this.attachMediaWidget(actor);
+                if (actor.get_name() === 'dashtodockContainer' && actor.constructor.name === 'DashToDock') {
+                    if (this._dashAddedID) {
+                        Main.uiGroup.disconnect(this._dashAddedID);
+                        this._dashAddedID = null;
+                    }
+                    attach(actor);
                 }
-            })
+            });
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+                const dash = Main.uiGroup.get_children().find(
+                    actor => actor.get_name() === 'dashtodockContainer' && actor.constructor.name === 'DashToDock'
+                );
+                if (dash && !this._mediaWidget.get_parent()) {
+                    this.attachMediaWidget(dash);
+                }
+                return GLib.SOURCE_CONTINUE;
+            });
         }
     }
 
@@ -104,6 +114,11 @@ export default class DockMediaPlayerExtension extends Extension {
         if (this._dashAddedID) {
             Main.uiGroup.disconnect(this._dashAddedID);
             this._dashAddedID = null;
+        }
+        
+        if (this._dashCheckTimeout) {
+            GLib.source_remove(this._dashCheckTimeout);
+            this._dashCheckTimeout = null;
         }
 
         this._mediaWidget.collapseContainer(() => {
